@@ -1,0 +1,10 @@
+{
+    
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.defaultProfile.osx": "Init dev env",
+    "cmake.configureOnOpen": false,
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "cmake.configureSettings": {
+        "toolkitFile": "${workspaceFolder}/.vscode/cmake-kits.json",
+    },
+  }

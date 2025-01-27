@@ -1,0 +1,8 @@
+
+[
+    {
+        "name": "Dreamcast toolkit",
+        "environmentSetupScript" : "/opt/toolchains/dc/kos/environ.sh",
+        "toolchainFile": "${workspaceFolder}/toolchains/dreamcast.cmake"
+    }
+]
