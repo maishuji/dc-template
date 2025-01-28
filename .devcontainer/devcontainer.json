@@ -13,8 +13,9 @@
 			]
 		}
 	},
+	"updateRemoteUserUID": true,
 	"mounts": [
-		"type=bind,source=${localEnv:HOME}/.ssh/,target=/non-root/.ssh/,readonly"
+		"type=bind,source=${localEnv:HOME}/.ssh/,target=/home/non-root/.ssh/,readonly"
 	],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
