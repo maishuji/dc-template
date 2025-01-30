@@ -33,9 +33,9 @@ int main(int argc, char **argv)
 	SetTargetFPS(60);
 	while (true)
 	{
-		rotationAngle += 40.0f; // Increment rotation angle
-		if (rotationAngle >= 3600.0f)
-			rotationAngle -= 3600.0f;
+		rotationAngle += 1.0f; // Increment rotation angle
+		if (rotationAngle >= 360.0f)
+			rotationAngle -= 360.0f;
 		controller = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
 		if (controller)
 		{
