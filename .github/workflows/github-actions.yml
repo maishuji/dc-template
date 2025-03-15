@@ -5,7 +5,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     container: 
-      image: maishuji/dc-kos-image:15.0.1-dev_26JAN25
+      image: maishuji/dc-kos-image:14.2.1-dev-01mar25-kp01mar25-gl01mar25
       options: --user root
     steps:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
