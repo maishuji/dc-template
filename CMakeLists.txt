@@ -10,6 +10,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(NoInSourceBuilds)
+include(GenerateCdiImage)
 
 # Optional: include the iwyu cmake module, useful for checking includes
 find_program(IWYU_PATH NAMES include-what-you-use iwyu)
