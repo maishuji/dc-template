@@ -19,8 +19,5 @@ target_link_libraries(${TARGET_NAME} PUBLIC dcplib raylib GL)
 set(ROMDISK_DIR "romdisk")
 kos_add_romdisk(${TARGET_NAME} ${ROMDISK_DIR})
 
-# ---- CDI Image generation ----
-add_custom_target(${TARGET_NAME}.cdi ALL
-                COMMAND ${MKDCDISC} -e ./${TARGET_NAME}.elf -o ${PROJECT_SOURCE_DIR}/out/${TARGET_NAME}.cdi -n ${TARGET_NAME} -v 3
-                DEPENDS ${TARGET_NAME}
-                COMMENT "Making CDI image")
+# ---- Add target to generate the CDI image ----
+add_generate_cdi_image_for_target(${TARGET_NAME})
