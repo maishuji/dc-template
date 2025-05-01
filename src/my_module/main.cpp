@@ -8,19 +8,20 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <iostream>
 
 #include "raylib/raylib.h"
 #include "raylib/raymath.h"
 #include "raylib/rlgl.h"
+
+#if defined(PLATFORM_DREAMCAST)
 #include <kos.h>
 
 KOS_INIT_FLAGS(INIT_DEFAULT);
+#endif
 
 int main(int argc, char **argv)
 {
-	maple_device_t *controller;
-	cont_state_t *cont;
-
 	InitWindow(640, 480, "Block stacking puzzle game in KOS!");
 	Camera camera = {0};
 	camera.position = (Vector3){4.0f, 4.0f, 4.0f}; // Camera position
@@ -31,29 +32,21 @@ int main(int argc, char **argv)
 	float rotationAngle = 0.0f; // Cube rotation angle
 
 	SetTargetFPS(60);
-	while (true)
+	auto go_on = true;
+
+	while (go_on)
 	{
 		rotationAngle += 1.0f; // Increment rotation angle
 		if (rotationAngle >= 360.0f)
 			rotationAngle -= 360.0f;
-		controller = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
-		if (controller)
+
+		// Press START or B to quit
+		if (IsKeyPressed(KEY_SPACE) || IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_FACE_RIGHT))
 		{
-			cont = (cont_state_t *)maple_dev_status(controller);
-			if (cont->buttons & CONT_DPAD_UP)
-			{
-			}
-			else if (cont->buttons & CONT_DPAD_DOWN)
-			{
-			}
-			else if (cont->buttons & CONT_A)
-			{
-			}
-			else if (cont->buttons & CONT_START)
-			{
-				break;
-			}
+			std::cout << "Exiting..." << std::endl;
+			go_on = false;
 		}
+
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 		BeginMode3D(camera);

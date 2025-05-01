@@ -13,11 +13,20 @@ set_target_properties(${TARGET_NAME} PROPERTIES
                       )
 
 # GL must be linked after raylib
-target_link_libraries(${TARGET_NAME} PUBLIC dcplib raylib GL)
+if(PLATFORM_DREAMCAST)
+    # ---- Dreamcast specific settings ----
+    target_link_libraries(${TARGET_NAME} PUBLIC dcplib raylib GL)
+else()
+    target_link_libraries(${TARGET_NAME} PUBLIC raylib GL)
+endif()
+message(STATUS "******Dreamcast ? : ${PLATFORM_DREAMCAST}")
 
-# ---- ROMDISK generation ----
-set(ROMDISK_DIR "romdisk")
-kos_add_romdisk(${TARGET_NAME} ${ROMDISK_DIR})
+if (PLATFORM_DREAMCAST)
+    # ---- ROMDISK generation ----
+    set(ROMDISK_DIR "romdisk")
+    kos_add_romdisk(${TARGET_NAME} ${ROMDISK_DIR})
 
-# ---- Add target to generate the CDI image ----
-add_generate_cdi_image_for_target(${TARGET_NAME})
+    # ---- Add target to generate the CDI image ----
+    add_generate_cdi_image_for_target(${TARGET_NAME})
+endif()
+
